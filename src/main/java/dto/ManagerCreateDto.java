@@ -1,51 +1,29 @@
 package dto;
 
-public class ManagerDto {
+import org.hibernate.validator.constraints.Length;
 
-    private Long id;
-    private String username;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+public class ManagerCreateDto {
+    @Email
     private String email;
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
+    private String username;
+    @Length(min = 8, max = 20)
+    private String password;
+    @NotBlank
     private String contact;
+    @NotBlank
     private String companyName;
+    @NotBlank
     private String city;
-    private String verificationCode;
-    private String sendTo;
-    // private Date birthday;
-    // datum zaposljavanja
-
-    public String getSendTo() {
-        return sendTo;
-    }
-
-    public void setSendTo(String sendTo) {
-        this.sendTo = sendTo;
-    }
-
-    public String getVerificationCode() {
-        return verificationCode;
-    }
-
-    public void setVerificationCode(String verificationCode) {
-        this.verificationCode = verificationCode;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+//    @NotBlank
+//    private Date hiringDate;
 
     public String getEmail() {
         return email;
@@ -71,6 +49,22 @@ public class ManagerDto {
         this.lastName = lastName;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getContact() {
         return contact;
     }
@@ -79,8 +73,8 @@ public class ManagerDto {
         this.contact = contact;
     }
 
-    public String getHotelName(String hotelName) {
-        return this.companyName;
+    public String getCompanyName() {
+        return companyName;
     }
 
     public void setCompanyName(String companyName) {

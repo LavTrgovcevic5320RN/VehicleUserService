@@ -12,7 +12,7 @@ public class Client extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String passportNumber;
-    private String numberOfReservations;
+    private Integer numberOfReservations;
 
     @Override
     public Long getId() {
@@ -32,11 +32,11 @@ public class Client extends User{
         this.passportNumber = passportNumber;
     }
 
-    public String getNumberOfReservations() {
+    public Integer getNumberOfReservations() {
         return numberOfReservations;
     }
 
-    public void setNumberOfReservations(String numberOfReservations) {
+    public void setNumberOfReservations(Integer numberOfReservations) {
         this.numberOfReservations = numberOfReservations;
     }
 }
