@@ -1,4 +1,4 @@
-package service;
+package service.impl;
 
 import dto.*;
 import mapper.UserMapper;
@@ -11,17 +11,20 @@ import repository.ClientRepository;
 import repository.ClientStatusRepository;
 import repository.ManagerRepository;
 import repository.UserRepository;
+import service.UserService;
 
 @Service
 @Transactional
-public class UserServiceImplementation implements UserService{
+public class UserServiceImplementation implements UserService {
     private UserRepository userRepository;
     private ClientRepository clientRepository;
     private ClientStatusRepository clientStatusRepository;
     private ManagerRepository managerRepository;
     private UserMapper userMapper;
     private JmsTemplate jmsTemplate;
-
+    private String clientRegisterDestination;
+    private String findEmailDestination;
+    private String resetPasswordDestination;
 
 
     @Override
