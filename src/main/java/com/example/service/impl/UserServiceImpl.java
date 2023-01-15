@@ -100,9 +100,9 @@ public class UserServiceImpl implements UserService {
     public TokenResponseDto login(TokenRequestDto tokenRequestDto) {
         //Try to find active user for specified credentials
         User user = userRepository
-                .findUserByUsernameAndPassword(tokenRequestDto.getUsername(), tokenRequestDto.getPassword())
+                .findUserByEmailAndPassword(tokenRequestDto.getEmail(), tokenRequestDto.getPassword())
                 .orElseThrow(() -> new NotFoundException(String
-                        .format("User with username: %s and password: %s not found.", tokenRequestDto.getUsername(),
+                        .format("User with email: %s and password: %s not found.", tokenRequestDto.getEmail(),
                                 tokenRequestDto.getPassword())));
         //Create token payload
         if (user.getBanned() == false && user.getEnabled()) {
