@@ -104,5 +104,16 @@ public class UserMapper {
         return clientStatusDto;
     }
 
+    public ClientQueueDto clientToClientQueueDto(Client client) {
+        ClientQueueDto clientQueueDto = new ClientQueueDto();
+        clientQueueDto.setFirstName(client.getFirstName());
+        clientQueueDto.setLastName(client.getLastName());
+        clientQueueDto.setEmail(client.getEmail());
+        clientQueueDto.setBirthday(client.getBirthday());
+
+        return clientQueueDto;
+    }
+
+
 
 }

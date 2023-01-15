@@ -21,6 +21,6 @@ public interface UserService {
     ClientStatusDto findDiscount(Long id);
     ClientStatusDto updateDiscount(Long id, DiscountDto discountDto);
     ClientStatusDto updateRankingSystem(Long id, ClientStatusCreateDto clientStatusCreateDto);
-//    void changeNumberOfReservations();
+    void changeNumberOfReservations(ClientQueueDto clientQueueDto);
 
 }

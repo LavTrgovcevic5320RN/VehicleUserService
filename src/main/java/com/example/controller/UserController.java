@@ -2,11 +2,13 @@ package com.example.controller;
 
 import com.example.dto.*;
 import com.example.listener.MessageHelper;
+import com.example.mapper.UserMapper;
+import com.example.repository.UserRepository;
 import com.example.security.CheckSecurity;
+import com.example.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import com.example.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,8 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
-import com.example.repository.UserRepository;
-import com.example.service.UserService;
+
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
@@ -23,7 +24,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
     private UserService userService;
     private JmsTemplate jmsTemplate;
     private MessageHelper messageHelper;
@@ -128,8 +128,8 @@ public class UserController {
     @ApiOperation(value = "Manager Hotel Name Update")
     @PutMapping("/{id}/hotel")
     public ResponseEntity<ManagerDto> updateHotelName(@PathVariable("id") Long id,
-                                                      @RequestBody @Valid CompanyNameManagerDto hotelNameManagerDto) {
-        return new ResponseEntity<>(userService.updateCompanyName(id, hotelNameManagerDto), HttpStatus.OK);
+                                                      @RequestBody @Valid CompanyNameManagerDto companyNameManagerDto) {
+        return new ResponseEntity<>(userService.updateCompanyName(id, companyNameManagerDto), HttpStatus.OK);
     }
 
 
@@ -163,18 +163,18 @@ public class UserController {
         return new ResponseEntity<>(userService.findDiscount(id), HttpStatus.OK);
     }
 
-//    @ApiOperation(value = "Discount Update")
-//    @PutMapping("/{id}/discountUpdate")
-//    public ResponseEntity<ClientStatusDto> updateDiscount(@PathVariable("id") Long id,
-//                                                          @RequestBody @Valid DiscountCreateDto discountCreateDto) {
-//        return new ResponseEntity<>(userService.updateDiscount(id, discountCreateDto), HttpStatus.OK);
-//    }
-//
-//    @ApiOperation(value = "Rank System Update")
-//    @PutMapping("/{id}/updateRankingSystem")
-//    public ResponseEntity<ClientStatusDto> updateRankingSystem(@PathVariable("id") Long id,
-//                                                      @RequestBody @Valid ClientStatusCreateDto clientStatusCreateDto) {
-//        return new ResponseEntity<>(userService.updateRankingSystem(id, clientStatusCreateDto), HttpStatus.OK);
-//    }
+    @ApiOperation(value = "Discount Update")
+    @PutMapping("/{id}/discountUpdate")
+    public ResponseEntity<ClientStatusDto> updateDiscount(@PathVariable("id") Long id,
+                                                          @RequestBody @Valid DiscountDto discountDto) {
+        return new ResponseEntity<>(userService.updateDiscount(id, discountDto), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Rank System Update")
+    @PutMapping("/{id}/updateRankingSystem")
+    public ResponseEntity<ClientStatusDto> updateRankingSystem(@PathVariable("id") Long id,
+                                                      @RequestBody @Valid ClientStatusCreateDto clientStatusCreateDto) {
+        return new ResponseEntity<>(userService.updateRankingSystem(id, clientStatusCreateDto), HttpStatus.OK);
+    }
 
 }
