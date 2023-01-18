@@ -1,5 +1,7 @@
 package com.example.dto;
 
+import java.sql.Date;
+
 public class ManagerDto {
 
     private Long id;
@@ -12,8 +14,8 @@ public class ManagerDto {
     private String city;
     private String verificationCode;
     private String sendTo;
-    // private Date birthday;
-    // datum zaposljavanja
+    private Date birthday;
+    private Date hiringDate;
 
     public String getSendTo() {
         return sendTo;
@@ -93,5 +95,25 @@ public class ManagerDto {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getHiringDate() {
+        return hiringDate;
+    }
+
+    public void setHiringDate(Date hiringDate) {
+        this.hiringDate = hiringDate;
     }
 }
