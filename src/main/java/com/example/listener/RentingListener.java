@@ -17,7 +17,7 @@ public class RentingListener {
         this.userService = userService;
     }
 
-//    @JmsListener(destination = "${destination.rentingNumber}", concurrency = "5-10")
+    @JmsListener(destination = "${destination.rentingNumber}", concurrency = "5-10")
     public void incrementNumberOfRenting(Message message){
         ClientQueueDto clientQueueDto = messageHelper.getMessage(message, ClientQueueDto.class);
         System.out.println(clientQueueDto.toString());
