@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
                         .format("User with email: %s and password: %s not found.", tokenRequestDto.getEmail(),
                                 tokenRequestDto.getPassword())));
         //Create token payload
-        if (user.getBanned() == false && user.getEnabled()) {
+        if (!user.getBanned() && user.getEnabled()) {
             Claims claims = Jwts.claims();
             claims.put("id", user.getId());
             claims.put("role", user.getRole().getName());
@@ -156,11 +156,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ManagerDto updateCompanyName(Long id, CompanyNameManagerDto hotelNameManagerDto) {
+    public ManagerDto updateCompanyName(Long id, CompanyNameManagerDto companyNameManagerDto) {
         Manager manager = managerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("Client with id: %d not found.", id)));
 
-        manager.setCompanyName(hotelNameManagerDto.getCompanyName());
+        manager.setCompanyName(companyNameManagerDto.getCompanyName());
         return userMapper.managerToManagerDto(userRepository.save(manager));
     }
 
@@ -241,14 +241,14 @@ public class UserServiceImpl implements UserService {
         else client.setNumberOfReservations(client.getNumberOfReservations() - 1);
         clientRepository.save(client);
 
-        String hotelName = clientQueueDto.getHotelName();
+        String companyName = clientQueueDto.getCompanyName();
         String city = clientQueueDto.getCity();
-        Manager manager = managerRepository.findManagerByCompanyNameAndCity(hotelName, city);
+        Manager manager = managerRepository.findManagerByCompanyNameAndCity(companyName, city);
 
         ClientQueueDto newClientQueueDto = userMapper.clientToClientQueueDto(client);
         newClientQueueDto.setIncrement(clientQueueDto.getIncrement());
         newClientQueueDto.setBookingId(clientQueueDto.getBookingId());
-        newClientQueueDto.setHotelName(clientQueueDto.getHotelName());
+        newClientQueueDto.setCompanyName(clientQueueDto.getCompanyName());
         newClientQueueDto.setCity(clientQueueDto.getCity());
         newClientQueueDto.setManagerEmail(manager.getEmail());
         newClientQueueDto.setManagerId(manager.getId());

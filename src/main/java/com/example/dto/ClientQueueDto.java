@@ -10,7 +10,7 @@ public class ClientQueueDto {
     private Date birthday;
     private Boolean increment;
     private Long bookingId;
-    private String hotelName;
+    private String companyName;
     private String city;
     private Long managerId;
     private String managerEmail;
@@ -25,7 +25,7 @@ public class ClientQueueDto {
                 ", birthday=" + birthday +
                 ", increment=" + increment +
                 ", bookingId=" + bookingId +
-                ", hotelName='" + hotelName + '\'' +
+                ", companyName='" + companyName + '\'' +
                 ", city='" + city + '\'' +
                 ", managerId=" + managerId +
                 ", managerEmail='" + managerEmail + '\'' +
@@ -88,12 +88,12 @@ public class ClientQueueDto {
         this.bookingId = bookingId;
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getCity() {

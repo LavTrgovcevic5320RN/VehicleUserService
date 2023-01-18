@@ -81,7 +81,7 @@ public class ManagerDto {
         this.contact = contact;
     }
 
-    public String getHotelName(String hotelName) {
+    public String getName(String companyName) {
         return this.companyName;
     }
 

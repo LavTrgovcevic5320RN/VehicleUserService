@@ -125,10 +125,10 @@ public class UserController {
         return new ResponseEntity<>(userService.updatePassportNumber(id, passportClientDto), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Manager Hotel Name Update")
-    @PutMapping("/{id}/hotel")
-    public ResponseEntity<ManagerDto> updateHotelName(@PathVariable("id") Long id,
-                                                      @RequestBody @Valid CompanyNameManagerDto companyNameManagerDto) {
+    @ApiOperation(value = "Manager Company Name Update")
+    @PutMapping("/{id}/company")
+    public ResponseEntity<ManagerDto> updateCompanyName(@PathVariable("id") Long id,
+                                                        @RequestBody @Valid CompanyNameManagerDto companyNameManagerDto) {
         return new ResponseEntity<>(userService.updateCompanyName(id, companyNameManagerDto), HttpStatus.OK);
     }
 
