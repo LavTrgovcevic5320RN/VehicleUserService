@@ -247,7 +247,7 @@ public class UserServiceImpl implements UserService {
 
         ClientQueueDto newClientQueueDto = userMapper.clientToClientQueueDto(client);
         newClientQueueDto.setIncrement(clientQueueDto.getIncrement());
-        newClientQueueDto.setBookingId(clientQueueDto.getBookingId());
+        newClientQueueDto.setRentingId(clientQueueDto.getRentingId());
         newClientQueueDto.setCompanyName(clientQueueDto.getCompanyName());
         newClientQueueDto.setCity(clientQueueDto.getCity());
         newClientQueueDto.setManagerEmail(manager.getEmail());

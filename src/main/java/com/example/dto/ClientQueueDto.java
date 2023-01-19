@@ -9,7 +9,7 @@ public class ClientQueueDto {
     private String lastName;
     private Date birthday;
     private Boolean increment;
-    private Long bookingId;
+    private Long rentingId;
     private String companyName;
     private String city;
     private Long managerId;
@@ -24,7 +24,7 @@ public class ClientQueueDto {
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
                 ", increment=" + increment +
-                ", bookingId=" + bookingId +
+                ", rentingId=" + rentingId +
                 ", companyName='" + companyName + '\'' +
                 ", city='" + city + '\'' +
                 ", managerId=" + managerId +
@@ -80,12 +80,12 @@ public class ClientQueueDto {
         this.increment = increment;
     }
 
-    public Long getBookingId() {
-        return bookingId;
+    public Long getRentingId() {
+        return rentingId;
     }
 
-    public void setBookingId(Long bookingId) {
-        this.bookingId = bookingId;
+    public void setRentingId(Long rentingId) {
+        this.rentingId = rentingId;
     }
 
     public String getCompanyName() {
