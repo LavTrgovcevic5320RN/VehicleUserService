@@ -113,7 +113,8 @@ public class UserController {
 
     @ApiOperation(value = "Password Update")
     @PutMapping("/{id}/password")
-    public ResponseEntity<UserDto> updatePassword(@PathVariable("id") Long id,
+    @CheckSecurity(roles = {"ROLE_ADMIN", "ROLE_CLIENT"})
+    public ResponseEntity<UserDto> updatePassword(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id,
                                                   @RequestBody @Valid PasswordUserDto passwordClientDto) {
         return new ResponseEntity<>(userService.updatePassword(id, passwordClientDto), HttpStatus.OK);
     }
@@ -128,7 +129,7 @@ public class UserController {
     @ApiOperation(value = "Manager Company Name Update")
     @PutMapping("/{id}/company")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<ManagerDto> updateCompanyName(@PathVariable("id") Long id,
+    public ResponseEntity<ManagerDto> updateCompanyName(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id,
                                                         @RequestBody @Valid CompanyNameManagerDto companyNameManagerDto) {
         return new ResponseEntity<>(userService.updateCompanyName(id, companyNameManagerDto), HttpStatus.OK);
     }
@@ -137,7 +138,7 @@ public class UserController {
     @ApiOperation(value = "Ban user")
     @PutMapping("/{id}/ban")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<UserDto> banUser(@PathVariable("id") Long id,
+    public ResponseEntity<UserDto> banUser(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id,
                                            @RequestBody @Valid BanUserDto banUserDto) {
         return new ResponseEntity<>(userService.banUser(id, banUserDto), HttpStatus.OK);
     }
@@ -145,7 +146,7 @@ public class UserController {
     @ApiOperation(value = "Unban user")
     @PutMapping("/{id}/unban")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<UserDto> unbanUser(@PathVariable("id") Long id,
+    public ResponseEntity<UserDto> unbanUser(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id,
                                              @RequestBody @Valid BanUserDto banUserDto) {
         return new ResponseEntity<>(userService.unbanUser(id, banUserDto), HttpStatus.OK);
     }
@@ -167,7 +168,7 @@ public class UserController {
     @ApiOperation(value = "Discount Update")
     @PutMapping("/{id}/discountUpdate")
     @CheckSecurity(roles = {"ROLE_ADMIN", "ROLE_MANAGER"})
-    public ResponseEntity<ClientStatusDto> updateDiscount(@PathVariable("id") Long id,
+    public ResponseEntity<ClientStatusDto> updateDiscount(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id,
                                                           @RequestBody @Valid DiscountDto discountDto) {
         return new ResponseEntity<>(userService.updateDiscount(id, discountDto), HttpStatus.OK);
     }
@@ -175,7 +176,7 @@ public class UserController {
     @ApiOperation(value = "Rank System Update")
     @PutMapping("/{id}/updateRankingSystem")
     @CheckSecurity(roles = {"ROLE_ADMIN", "ROLE_MANAGER"})
-    public ResponseEntity<ClientStatusDto> updateRankingSystem(@PathVariable("id") Long id,
+    public ResponseEntity<ClientStatusDto> updateRankingSystem(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id,
                                                       @RequestBody @Valid ClientStatusCreateDto clientStatusCreateDto) {
         return new ResponseEntity<>(userService.updateRankingSystem(id, clientStatusCreateDto), HttpStatus.OK);
     }
