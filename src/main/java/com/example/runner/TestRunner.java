@@ -37,9 +37,9 @@ public class TestRunner implements CommandLineRunner {
         roleRepository.save(roleAdmin);
 
         User admin = new User();
-        admin.setEmail("ltrgovcevic5320rn@raf.rs");
-        admin.setUsername("Lav Trgovcevic");
-        admin.setPassword("Slogoman01");
+        admin.setEmail("admin@gmail.com");
+        admin.setUsername("admin");
+        admin.setPassword("adminadmin");
         admin.setBanned(false);
         admin.setEnabled(true);
         admin.setRole(roleAdmin);

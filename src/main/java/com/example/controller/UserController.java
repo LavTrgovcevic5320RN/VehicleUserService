@@ -127,6 +127,7 @@ public class UserController {
 
     @ApiOperation(value = "Manager Company Name Update")
     @PutMapping("/{id}/company")
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
     public ResponseEntity<ManagerDto> updateCompanyName(@PathVariable("id") Long id,
                                                         @RequestBody @Valid CompanyNameManagerDto companyNameManagerDto) {
         return new ResponseEntity<>(userService.updateCompanyName(id, companyNameManagerDto), HttpStatus.OK);
@@ -135,7 +136,7 @@ public class UserController {
 
     @ApiOperation(value = "Ban user")
     @PutMapping("/{id}/ban")
-    // @CheckSecurity(roles = {"ROLE_ADMIN"})
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
     public ResponseEntity<UserDto> banUser(@PathVariable("id") Long id,
                                            @RequestBody @Valid BanUserDto banUserDto) {
         return new ResponseEntity<>(userService.banUser(id, banUserDto), HttpStatus.OK);
@@ -143,7 +144,7 @@ public class UserController {
 
     @ApiOperation(value = "Unban user")
     @PutMapping("/{id}/unban")
-    //@CheckSecurity(roles = {"ROLE_ADMIN"})
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
     public ResponseEntity<UserDto> unbanUser(@PathVariable("id") Long id,
                                              @RequestBody @Valid BanUserDto banUserDto) {
         return new ResponseEntity<>(userService.unbanUser(id, banUserDto), HttpStatus.OK);
@@ -165,6 +166,7 @@ public class UserController {
 
     @ApiOperation(value = "Discount Update")
     @PutMapping("/{id}/discountUpdate")
+    @CheckSecurity(roles = {"ROLE_ADMIN", "ROLE_MANAGER"})
     public ResponseEntity<ClientStatusDto> updateDiscount(@PathVariable("id") Long id,
                                                           @RequestBody @Valid DiscountDto discountDto) {
         return new ResponseEntity<>(userService.updateDiscount(id, discountDto), HttpStatus.OK);
@@ -172,6 +174,7 @@ public class UserController {
 
     @ApiOperation(value = "Rank System Update")
     @PutMapping("/{id}/updateRankingSystem")
+    @CheckSecurity(roles = {"ROLE_ADMIN", "ROLE_MANAGER"})
     public ResponseEntity<ClientStatusDto> updateRankingSystem(@PathVariable("id") Long id,
                                                       @RequestBody @Valid ClientStatusCreateDto clientStatusCreateDto) {
         return new ResponseEntity<>(userService.updateRankingSystem(id, clientStatusCreateDto), HttpStatus.OK);

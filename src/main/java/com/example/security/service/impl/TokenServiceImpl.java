@@ -7,6 +7,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.Date;
+
 @Service
 public class TokenServiceImpl implements TokenService {
     @Value("${oauth.jwt.secret}")
@@ -18,6 +21,7 @@ public class TokenServiceImpl implements TokenService {
         return Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .setIssuedAt(Date.from(Instant.now()))
                 .compact();
     }
 
